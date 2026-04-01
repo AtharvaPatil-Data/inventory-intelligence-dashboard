@@ -69,7 +69,7 @@ CALCULATE(
     'FactInventory'[DOH] > 45
 )
 
-##11. Low Safety Stock Count
+## 11. Low Safety Stock Count
 Counts rows where on-hand inventory is below safety stock.
 
 Low Safety Stock Count =
@@ -78,7 +78,7 @@ CALCULATE(
     'FactInventory'[Shelf Stock] < 'FactInventory'[Safety Stock]
 )
 
-##12. Selected Inventory Value
+## 12. Selected Inventory Value
 Dynamic measure used with the Inventory Type selector to switch between On-Hand, WIP, In-Transit, and Total inventory value.
 
 Selected Inventory Value =
