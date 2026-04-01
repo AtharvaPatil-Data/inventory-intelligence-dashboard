@@ -53,7 +53,7 @@ This dashboard helps improve:
 ## 📁 Repository Structure
 - `screenshots/` → Dashboard images
 - `docs/` → DAX, assumptions, and insights
-- `pbix/` → Power BI file (if shared)
+
 
 ## ⚠️ Note
 This is a portfolio version of the project. Any confidential or identifying business information has been excluded.
