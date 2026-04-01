@@ -15,74 +15,95 @@ SUM('FactInventory'[GIT ($)])
 ## 2. Total Inventory Quantity
 Calculates the total inventory quantity across On-Hand, WIP, and In-Transit inventory.
 
+```DAX
 Total Inventory Quantity =
 SUM('FactInventory'[Shelf Stock]) +
 SUM('FactInventory'[WIP]) +
 SUM('FactInventory'[GIT])
+```
 
 ## 3. On-Hand Inventory Value
 Returns the value of on-hand inventory only.
 
+```DAX
 On-Hand Inventory Value =
 SUM('FactInventory'[Shelf Stock ($)])
+```
 
 ## 4. Work-in-Progress Value
 Returns the value of work-in-progress inventory only.
 
+```DAX
 WIP Value =
 SUM('FactInventory'[WIP ($)])
+```
 
 ## 5. In-Transit Inventory Value
 Returns the value of in-transit inventory only.
 
+```DAX
 In-Transit Inventory Value =
 SUM('FactInventory'[GIT ($)])
+```
 
 ## 6. Average Days on Hand
 Returns the average Days on Hand (DOH) across the filtered dataset.
 
+```DAX
 Average DOH =
 AVERAGE('FactInventory'[DOH])
+```
 
 ## 7. On-Hand %
 Shows the share of on-hand inventory value as a percentage of total inventory value.
 
+```DAX
 On-Hand % =
 DIVIDE([On-Hand Inventory Value], [Total Inventory Value], 0)
+```
 
 ## 8. WIP %
 Shows the share of WIP inventory value as a percentage of total inventory value.
 
+```DAX
 WIP % =
 DIVIDE([WIP Value], [Total Inventory Value], 0)
+```
 
 ## 9. In-Transit %
 Shows the share of in-transit inventory value as a percentage of total inventory value.
 
+```DAX
 In-Transit % =
 DIVIDE([In-Transit Inventory Value], [Total Inventory Value], 0)
+```
 
 ## 10. High DOH Count
 Counts materials with Days on Hand above the defined threshold.
 
+```DAX
 High DOH Count =
 CALCULATE(
     COUNTROWS('FactInventory'),
     'FactInventory'[DOH] > 45
 )
+```
 
 ## 11. Low Safety Stock Count
 Counts rows where on-hand inventory is below safety stock.
 
+```DAX
 Low Safety Stock Count =
 CALCULATE(
     COUNTROWS('FactInventory'),
     'FactInventory'[Shelf Stock] < 'FactInventory'[Safety Stock]
 )
+```
 
 ## 12. Selected Inventory Value
 Dynamic measure used with the Inventory Type selector to switch between On-Hand, WIP, In-Transit, and Total inventory value.
 
+```DAX
 Selected Inventory Value =
 SWITCH(
     SELECTEDVALUE('DimInventoryType'[Inventory Type], "Total"),
@@ -91,4 +112,4 @@ SWITCH(
     "In-Transit", [In-Transit Inventory Value],
     [Total Inventory Value]
 )
-
+```
