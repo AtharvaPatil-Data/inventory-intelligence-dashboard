@@ -5,10 +5,12 @@ This file contains the core DAX measures used in the **Inventory Intelligence Da
 ## 1. Total Inventory Value
 Calculates the total inventory value across On-Hand, Work-in-Progress (WIP), and In-Transit inventory.
 
+```DAX
 Total Inventory Value =
 SUM('FactInventory'[Shelf Stock ($)]) +
 SUM('FactInventory'[WIP ($)]) +
 SUM('FactInventory'[GIT ($)])
+```
 
 ## 2. Total Inventory Quantity
 Calculates the total inventory quantity across On-Hand, WIP, and In-Transit inventory.
